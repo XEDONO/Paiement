@@ -17,6 +17,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTableModule,
     MatIconModule,
     MatListModule,
     MatGridListModule,
