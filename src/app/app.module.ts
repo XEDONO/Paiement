@@ -17,8 +17,11 @@ import { ClientsComponent } from './clients/clients.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
 
+const MaterialComponents=[
+  MatButtonModule
+];
 @NgModule({
   declarations: [
     AppComponent,

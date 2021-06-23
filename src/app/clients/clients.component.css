@@ -44,5 +44,17 @@
   text-align: center;
   font-weight: bold;
 }
+th{
+  font-size: 120%;
+  text-align: center;
+}
+td{
+  font-size: 86%;
+
+}
+button{
+  position: center;
+  margin-right: 0.2rem;
+}
 
 
