@@ -1,9 +1,9 @@
-h3{
-  background-color: #b80159;
-  padding: 1px;
-  margin: 0;
+.footer{
+  bottom: 0px;
   position: absolute;
-  width: 99.8%;
-  bottom: 0;
-  text-align: right;
+  width: 100%;
+  text-align: center;
+}
+div{
+  background-color: purple;
 }

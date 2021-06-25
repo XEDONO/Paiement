@@ -1,5 +1,6 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Liste des Clients</h1>
+
+  <h1 class="mat-h1"><mat-icon color="primary">person_pin</mat-icon> Liste des Clients</h1>
 
 
 
@@ -10,9 +11,9 @@
           <div>
             <div>
               <span></span>
-            <button mat-fab color="primary" aria-label="Ajouter un Client">
+            <a routerLink="/ajouter"> <button mat-fab color="primary" aria-label="Ajouter un Client">
               <mat-icon>group_add</mat-icon>
-            </button></div>
+            </button></a></div>
 <p></p>
             <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
               <!-- Position Column -->
@@ -84,3 +85,4 @@
 
 
 </div>
+
