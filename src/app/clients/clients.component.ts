@@ -1,20 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import {HttpClient} from "@angular/common/http";
-import * as url from "url";
-export class Client {
-  constructor(
-    public id: number,
-    public prenom: string,
-    public nom: string,
-    public ville: string,
-    public tel: string,
-    public bank: string,
-    public montant: number,
-  ) {
-  }
-}
+import {ClientListService} from "../client-list.service";
+import {ClientsReports} from "../../ClientsReports";
+import {MatTableDataSource} from "@angular/material/table";
+
+
 
 
 @Component({
@@ -23,9 +14,6 @@ export class Client {
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit{
-
-  clients: Client[]=[];
-
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -45,28 +33,21 @@ export class ClientsComponent implements OnInit{
       ];
     })
   );
-  displayedColumns: string[] = ['number', 'name', 'prenom','ville', 'weight','bank','plafond','action'];
-
-
-  ngOnInit() {
-    this.getClients();
-  }
-
-  getClients(){
-this.httpClient.get<any>(url:'http://localhost:8080/api/clients').subscribe(
-response=>{
-console.log(response);
-  this.clients=response;
+  ELEMENT_DATA:ClientsReports[]=[];
+  displayedColumns: string[] = ['id', 'nom', 'prenom', 'ville','tel','bank','montant','action'];
+  dataSource = new MatTableDataSource<ClientsReports>(this.ELEMENT_DATA);
+ngOnInit() {
+  this.getAllClients();
 }
-
-    )
-  }
+public getAllClients(){
+  let resp=this.service.getClients();
+  resp.subscribe(report=>this.dataSource.data=report as ClientsReports[])
+}
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private httpClient:HttpClient,
+              private service:ClientListService) {
 
-  ) {
-this.clients=[];
   }
 }
+
