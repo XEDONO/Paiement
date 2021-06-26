@@ -1,41 +1,31 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-export interface PeriodicElement {
-  name: string;
-  prenom: string;
-  position: number;
-  tel: number;
-  bank: string;
-  plafond:number;
+import {HttpClient} from "@angular/common/http";
+import * as url from "url";
+export class Client {
+  constructor(
+    public id: number,
+    public prenom: string,
+    public nom: string,
+    public ville: string,
+    public tel: string,
+    public bank: string,
+    public montant: number,
+  ) {
+  }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hassani',prenom:'Nom1', tel:612458798, bank: 'BMCE',plafond:1540},
-  {position: 2, name: 'Nassiri', prenom:'Nom2',tel: 612458798, bank: 'WAFA BANK',plafond:20000},
-  {position: 3, name: 'Prenom 1', prenom:'Nom3',tel: 612458798, bank: 'SOCIETE GENERALE',plafond:48120},
-  {position: 4, name: 'Prenom 2', prenom:'Nom4',tel: 612458798, bank: 'BMCE',plafond:146970},
-  {position: 5, name: 'Prenom 3', prenom:'Nom5',tel: 612458798, bank: 'BANK POPULAIRE',plafond:13650},
-  {position: 6, name: 'Prenom 4', prenom:'Nom6',tel: 612458798, bank: 'WAFABANK',plafond:85040},
-  {position: 7, name: 'Prenom 5', prenom:'Nom7',tel: 124587198 ,bank: 'BMCE',plafond:64970},
-  {position: 8, name: 'Prenom 6', prenom:'Nom8',tel: 124518798, bank: 'BANK POPULAIRE',plafond:5000},
-  {position: 9, name: 'Prenom 7', prenom:'Nom9',tel: 612458798, bank: 'SOCIETE GENERALE',plafond:1000},
-  {position: 10, name:'Prenom 8', prenom:'Nom10',tel: 612458798, bank: 'WAFA BANK',plafond:15000},
 
-
-
-
-
-
-
-
-];
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent {
+export class ClientsComponent implements OnInit{
+
+  clients: Client[]=[];
+
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -55,10 +45,28 @@ export class ClientsComponent {
       ];
     })
   );
-  displayedColumns: string[] = ['number', 'name', 'prenom', 'weight','bank','plafond','action'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['number', 'name', 'prenom','ville', 'weight','bank','plafond','action'];
 
-  constructor(private breakpointObserver: BreakpointObserver) {
 
+  ngOnInit() {
+    this.getClients();
+  }
+
+  getClients(){
+this.httpClient.get<any>(url:'http://localhost:8080/api/clients').subscribe(
+response=>{
+console.log(response);
+  this.clients=response;
+}
+
+    )
+  }
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private httpClient:HttpClient,
+
+  ) {
+this.clients=[];
   }
 }

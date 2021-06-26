@@ -36,7 +36,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-
+import {HttpClientModule} from "@angular/common/http";
 
 
 const MaterialComponents=[
@@ -84,7 +84,8 @@ const MaterialComponents=[
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialComponents
+    MaterialComponents,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
