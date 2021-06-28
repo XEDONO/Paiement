@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import {ClientListService} from "../client-list.service";
 import {ClientsReports} from "../../ClientsReports";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableDataSource} from "@angular/material/table";
 
 

@@ -37,6 +37,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from "@angular/common/http";
+import { MatSelectModule } from '@angular/material/select';
 
 
 const MaterialComponents=[
@@ -85,7 +86,8 @@ const MaterialComponents=[
     FormsModule,
     ReactiveFormsModule,
     MaterialComponents,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

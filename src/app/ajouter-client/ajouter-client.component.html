@@ -16,17 +16,97 @@
 
 <p></p>
           <div>
-            <form class="example-form">
+            <form class="example-form" (ngSubmit)="onSubmit()" #addClientForm="ngForm" novalidate>
+
+
+
+
+              <!--Nom-->
               <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Nom:</mat-label>
-                <input type="text" matInput [formControl]="emailFormControl" placeholder="Exemple : Mohamed ou Ali, etc...">
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                  Please enter a valid email address
+                <mat-label>Nom :</mat-label>
+                <input id="nom" type="text" matInput [formControl]="nomFormControl"  name="C-nom" ngModel placeholder="Exemple : Mohamed ou Ali, etc...">
+                <mat-error *ngIf="nomFormControl.hasError('nom') && !nomFormControl.hasError('required')">
+                  Veuillez Taper Un Nom !
                 </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
+                <mat-error *ngIf="nomFormControl.hasError('required')">
                   Le Nom est obligatoire ! !
                 </mat-error>
               </mat-form-field>
+
+              <!--Prenom-->
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Prenom :</mat-label>
+                <input id="prenom" type="text" matInput [formControl]="prenomFormControl"  name="C-prenom" ngModel placeholder="Exemple : Alaoui ou Hassani, etc ...">
+                <mat-error *ngIf="prenomFormControl.hasError('Prenom') && !prenomFormControl.hasError('required')">
+                  Veuillez Taper Un Prenom !
+                </mat-error>
+                <mat-error *ngIf="prenomFormControl.hasError('required')">
+                  Le Prenom est obligatoire ! !
+                </mat-error>
+              </mat-form-field>
+
+
+              <!--Telephone -->
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Telephone :</mat-label>
+                <input id="tel" type="text" matInput #input maxlength="10" [formControl]="telFormControl"  name="C-tel" ngModel placeholder="Exemple : 0695-157489">
+                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                <mat-error *ngIf="telFormControl.hasError('Prenom') && !telFormControl.hasError('required')">
+                  Veuillez Taper Un Tel !
+                </mat-error>
+                <mat-error *ngIf="telFormControl.hasError('required')">
+                  Le Telephone est obligatoire ! !
+                </mat-error>
+              </mat-form-field>
+
+              <!--Ville-->
+
+             <mat-form-field appearance="fill"  name="C-ville" ngModel>
+                <mat-label>Choisissez une ville</mat-label>
+                <mat-select >
+                  <mat-option value="option1">Casablanca</mat-option>
+                  <mat-option value="option2">Rabat </mat-option>
+                  <mat-option value="option3">Meknes</mat-option>
+                  <mat-option value="option4">Marrakech</mat-option>
+                  <mat-option value="option5">Agadir</mat-option>
+                  <mat-option value="option6">Laayoune</mat-option>
+                </mat-select>
+              </mat-form-field>
+<br>
+              <!--Banque-->
+
+              <mat-form-field appearance="fill" name="C-bank" ngModel>
+                <mat-label>Choisissez une Banque</mat-label>
+                <mat-select>
+                  <mat-option value="option1">BMCE</mat-option>
+                  <mat-option value="option2">Attijari Wafa Bank </mat-option>
+                  <mat-option value="option3">BANQUE POPULAIRE</mat-option>
+                  <mat-option value="option4">Banque 4</mat-option>
+                </mat-select>
+              </mat-form-field>
+<br>
+              <!--Montant-->
+
+              <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Amount</mat-label>
+                <input id="montant" matInput type="number" class="example-right-align"  name="C-montant" ngModel placeholder="0">
+                <span matPrefix>DH  &nbsp;</span>
+                <span matSuffix>.00</span>
+              </mat-form-field>
+
+
+              <br>
+              <br>
+              <!--ajouter-->
+
+              <button mat-raised-button color="accent" type="submit">
+                <mat-icon>group_add</mat-icon>
+                Ajouter</button>
+
+
+
+
             </form>
 
 
